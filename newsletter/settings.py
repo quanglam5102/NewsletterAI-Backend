@@ -14,8 +14,8 @@ from pathlib import Path
 
 import os
 
-# settings.py
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost").split(",")
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
