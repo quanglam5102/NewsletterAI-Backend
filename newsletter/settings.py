@@ -14,7 +14,7 @@ from pathlib import Path
 
 import os
 
-ALLOWED_HOSTS = ['newsletter-ai-backend.vercel.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 print(f"DEBUG: ALLOWED_HOSTS = {ALLOWED_HOSTS}")
@@ -31,9 +31,6 @@ SECRET_KEY = 'django-insecure-m(g+=zw54wp)*t&p6tk)5^yrn$f45ctz4+gc7w&ub7q-^ao%f#
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
