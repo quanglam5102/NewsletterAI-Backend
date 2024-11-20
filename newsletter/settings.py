@@ -16,8 +16,7 @@ import os
 
 # settings.py
 ALLOWED_HOSTS = [
-    'newsletter-ai-backend-g05r2jz0v-quanglam5102s-projects.vercel.app',  # Add the Vercel domain here
-    'your-frontend-domain.vercel.app',  # (Optional) if your frontend is on a different domain
+    '*.vercel.app',
     'localhost',  # For local development
     '127.0.0.1',  # For local development
 ]
