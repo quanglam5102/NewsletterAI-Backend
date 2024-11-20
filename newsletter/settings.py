@@ -15,11 +15,7 @@ from pathlib import Path
 import os
 
 # settings.py
-ALLOWED_HOSTS = [
-    'https://newsletter-ai-backend.vercel.app/',
-    'localhost',  # For local development
-    '127.0.0.1',  # For local development
-]
+ALLOWED_HOSTS = ['*']
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
