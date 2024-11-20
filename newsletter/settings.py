@@ -14,7 +14,14 @@ from pathlib import Path
 
 import os
 
-ALLOWED_HOSTS = ['*']  # Temporarily for testing
+# settings.py
+ALLOWED_HOSTS = [
+    'newsletter-ai-backend-g05r2jz0v-quanglam5102s-projects.vercel.app',  # Add the Vercel domain here
+    'your-frontend-domain.vercel.app',  # (Optional) if your frontend is on a different domain
+    'localhost',  # For local development
+    '127.0.0.1',  # For local development
+]
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
