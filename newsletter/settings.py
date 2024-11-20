@@ -16,7 +16,7 @@ import os
 
 # settings.py
 ALLOWED_HOSTS = [
-    '*.vercel.app',
+    'https://newsletter-ai-backend.vercel.app/',
     'localhost',  # For local development
     '127.0.0.1',  # For local development
 ]
