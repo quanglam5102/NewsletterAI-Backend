@@ -1,19 +1,25 @@
 {
     "version": 2,
     "builds": [
-        {
-            "src": "newsletter/wsgi.py",
-            "use": "@vercel/python"
-        }
+      {
+        "src": "newsletter/wsgi.py",
+        "use": "@vercel/python"
+      }
     ],
+    "functions": {
+      "api/**.py": {
+        "maxDuration": 120
+      }
+    },
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "newsletter/wsgi.py",
-            "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-            "headers": {
-                "Access-Control-Allow-Origin": "*"
-            }
+      {
+        "src": "/(.*)",
+        "dest": "newsletter/wsgi.py",
+        "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+        "headers": {
+          "Access-Control-Allow-Origin": "*"
         }
+      }
     ]
-}
+  }
+  
