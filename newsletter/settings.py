@@ -15,6 +15,8 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 from django.core.management import call_command
+from django.db import connections
+from django.db.migrations.executor import MigrationExecutor
 
 # Load environment variables from the .env file
 load_dotenv()
@@ -90,7 +92,11 @@ WSGI_APPLICATION = 'newsletter.wsgi.application'
 
 if os.environ.get('VERCEL') == '1':
     # If deploying to Vercel, use /tmp directory for SQLite
-    # call_command('migrate', interactive=False)
+    connection = connections['default']
+    executor = MigrationExecutor(connection)
+    targets = executor.loader.graph.leaf_nodes()
+    if targets:
+        call_command('migrate', interactive=False)
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
