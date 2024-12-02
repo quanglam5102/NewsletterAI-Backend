@@ -1,4 +1,5 @@
 .vercel
 newsletter/__pycache__
+api/__pycache__
 .venv
 .env
