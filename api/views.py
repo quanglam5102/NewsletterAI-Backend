@@ -75,26 +75,26 @@ def get_gpt_response(website_text):
     return chat_completion.choices[0].message.content
 
 # API View
-# @api_view(['GET'])
-# def recent_news_view(request):
-#     url = 'https://vinfastauto.us/investor-relations/news'
-#     success, page_text = get_text_from_url(url)
+@api_view(['GET'])
+def recent_news_view(request):
+    url = 'https://vinfastauto.us/investor-relations/news'
+    success, page_text = get_text_from_url(url)
 
-#     if success:
-#         selected_text = select_lines(page_text, 10, 518)
-#         recent_news = filter_recent_news(selected_text)
+    if success:
+        selected_text = select_lines(page_text, 10, 518)
+        recent_news = filter_recent_news(selected_text)
         
-#         if not recent_news:
-#             return Response({"error": "No recent news found."}, status=status.HTTP_404_NOT_FOUND)
+        if not recent_news:
+            return Response({"error": "No recent news found."}, status=status.HTTP_404_NOT_FOUND)
 
-#         gpt_response = get_gpt_response(recent_news)
+        gpt_response = get_gpt_response(recent_news)
 
-#         if "Error:" in gpt_response:
-#             return Response({"error": gpt_response}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        if "Error:" in gpt_response:
+            return Response({"error": gpt_response}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-#         return Response({"newsletter": gpt_response}, status=status.HTTP_200_OK)
-#     else:
-#         return Response({"error": page_text}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        return Response({"newsletter": gpt_response}, status=status.HTTP_200_OK)
+    else:
+        return Response({"error": page_text}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 def get_text_from_urls(urls):
@@ -108,27 +108,27 @@ def get_text_from_urls(urls):
             results[url] = None  # Indicate failure for this URL
     return results
 
-@api_view(['GET'])
-def recent_news_view(request):
-    urls = [
-        'https://vinfastauto.us/investor-relations/news',
-        'https://www.reddit.com/r/VinFastCommunity/',
-        'https://community.vinfastauto.us/forums/topic/discussions/'
-    ]
+# @api_view(['GET'])
+# def recent_news_view(request):
+#     urls = [
+#         'https://vinfastauto.us/investor-relations/news',
+#         'https://www.reddit.com/r/VinFastCommunity/',
+#         'https://community.vinfastauto.us/forums/topic/discussions/'
+#     ]
     
-    fetched_data = get_text_from_urls(urls)
-    all_text = []
+#     fetched_data = get_text_from_urls(urls)
+#     all_text = []
 
-    for url, page_text in fetched_data.items():
-        if page_text is None:
-            continue
-        all_text.append(page_text)
+#     for url, page_text in fetched_data.items():
+#         if page_text is None:
+#             continue
+#         all_text.append(page_text)
     
-    if not all_text:
-        return Response({"error": "No content found from the provided URLs."}, status=status.HTTP_404_NOT_FOUND)
+#     if not all_text:
+#         return Response({"error": "No content found from the provided URLs."}, status=status.HTTP_404_NOT_FOUND)
     
-    concatenated_text = "\n\n---\n\n".join(all_text)
-    return Response({"newsletter": concatenated_text}, status=status.HTTP_200_OK)
+#     concatenated_text = "\n\n---\n\n".join(all_text)
+#     return Response({"newsletter": concatenated_text}, status=status.HTTP_200_OK)
 
 
 # Test View to say Hello World

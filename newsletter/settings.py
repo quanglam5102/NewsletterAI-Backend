@@ -92,11 +92,6 @@ WSGI_APPLICATION = 'newsletter.wsgi.application'
 
 if os.environ.get('VERCEL') == '1':
     # If deploying to Vercel, use /tmp directory for SQLite
-    connection = connections['default']
-    executor = MigrationExecutor(connection)
-    targets = executor.loader.graph.leaf_nodes()
-    if targets:
-        call_command('migrate', interactive=False)
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
