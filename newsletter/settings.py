@@ -140,7 +140,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://10.110.8.68:3000',
     'http://192.168.2.90:3000',
-    'https://testingapp-nine.vercel.app',
+    'https://newsletter-ai-frontend.vercel.app',
 ]
 
 CORS_ALLOW_METHODS = [
