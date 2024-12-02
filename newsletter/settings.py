@@ -87,12 +87,22 @@ WSGI_APPLICATION = 'newsletter.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if os.environ.get('VERCEL') == '1':
+    # If deploying to Vercel, use /tmp directory for SQLite
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': '/tmp/db.sqlite3',  # Use Vercel's temporary storage
+        }
     }
-}
+else:
+    # For local development, use the project's root directory
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),  # Default location
+        }
+    }
 
 
 # Password validation
