@@ -26,9 +26,6 @@ OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
 ALLOWED_HOSTS = ['*']
 
-
-print(f"DEBUG: ALLOWED_HOSTS = {ALLOWED_HOSTS}")
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
